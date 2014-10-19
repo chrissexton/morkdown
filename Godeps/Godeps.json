@@ -1,0 +1,27 @@
+{
+	"ImportPath": "github.com/chrissexton/morkdown",
+	"GoVersion": "devel +e1a081e6ddf8 Sat Sep 27 11:56:54 2014 -0700",
+	"Deps": [
+		{
+			"ImportPath": "github.com/codegangsta/inject",
+			"Rev": "346a984957aa24276ebc5e7b16b3ac6a50fe8138"
+		},
+		{
+			"ImportPath": "github.com/go-martini/martini",
+			"Comment": "v1.0-47-g9c8b84a",
+			"Rev": "9c8b84a170f5fe2352ae698a85cd5eb66b38a290"
+		},
+		{
+			"ImportPath": "github.com/martini-contrib/auth",
+			"Rev": "a7b827c87c2d3e571c974f1fec378def3f2ea1ed"
+		},
+		{
+			"ImportPath": "github.com/martini-contrib/render",
+			"Rev": "b65063311fac6cbf84d3538f5715f7847e648322"
+		},
+		{
+			"ImportPath": "github.com/oxtoacart/bpool",
+			"Rev": "0f78ff9152c03745d1a47c9023af1b424e202c07"
+		}
+	]
+}
