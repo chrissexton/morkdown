@@ -21,6 +21,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular-markdown-editable": "~0.0.7"
+    "angular-markdown-editable": "~0.0.7",
+    "bootstrap": "~3.2.0",
+    "angular-debounce": "~1.0.0",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.4.5"
   }
 }
