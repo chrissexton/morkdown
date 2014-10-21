@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"strings"
 
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/auth"
@@ -73,27 +74,31 @@ func deleteFiles(params martini.Params, rr render.Render) {
 	rr.JSON(200, params["_1"])
 }
 
+type info struct {
+	Name  string
+	IsDir bool
+}
+
 func listFiles(params martini.Params, rr render.Render) {
-	files, err := ioutil.ReadDir(path.Join(fileDir, params["_1"]))
-	if err != nil {
-		rr.JSON(500, fmt.Sprintf("Could not read directory: /%s", params["_1"]))
-		return
-	}
+	files := getFiles(fileDir+"/", path.Join(fileDir, params["_1"]))
 
-	type info struct {
-		Name  string
-		IsDir bool
-	}
+	rr.JSON(200, files)
+}
 
-	names := make([]info, 0)
+func getFiles(base, pth string) (names []info) {
+	files, _ := ioutil.ReadDir(pth)
+
 	for _, file := range files {
+		filePath := strings.Replace(path.Join(pth, file.Name()), base, "", -1)
 		names = append(names, info{
-			Name:  file.Name(),
+			Name:  filePath,
 			IsDir: file.IsDir(),
 		})
+		if file.IsDir() {
+			names = append(names, getFiles(base, filePath)...)
+		}
 	}
-
-	rr.JSON(200, names)
+	return
 }
 
 func writeFile(req *http.Request, params martini.Params, rr render.Render) {
