@@ -12,6 +12,7 @@
   ],
   "license": "WTFPL",
   "private": true,
+  "appPath": "app",
   "ignore": [
     "**/.*",
     "node_modules",
