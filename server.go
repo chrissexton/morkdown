@@ -5,7 +5,6 @@ package main
 import (
 	"encoding/json"
 	"flag"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -117,10 +116,6 @@ func writeFile(req *http.Request, params martini.Params, rr render.Render) {
 		rr.JSON(500, err)
 		return
 	}
-
-	fmt.Println("File", file)
-	fmt.Println("Dir", dir)
-	fmt.Println("fileName", fileName)
 
 	err = ioutil.WriteFile(
 		file,
